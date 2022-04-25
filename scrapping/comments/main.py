@@ -3,7 +3,7 @@ from pmaw import PushshiftAPI
 
 api = PushshiftAPI()
 
-subs_df = pd.read_csv('../../data/raw/posts.csv') 
+subs_df = pd.read_csv('../../data/raw/posts.csv', low_memory=False) 
 sub_ids = list(subs_df.loc[:, 'id']) 
 
 not_finished=True
@@ -16,8 +16,9 @@ while not_finished:
             cache_dir='../../data/raw',
         ) 
         comment_ids = list(comment_ids)
-    except:
+    except Exception as e:
         print('Trying again: get submission')
+	print(e)
         continue
     not_finished=False
 
@@ -30,8 +31,9 @@ while not_finished:
             before=1650550522,
             cache_dir='../../data/raw',
         )
-    except:
+    except Exception as e:
         print('Trying again: search comments')
+	print(e)
         continue
     not_finished=False
 
