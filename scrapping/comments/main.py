@@ -18,7 +18,7 @@ while not_finished:
         comment_ids = list(comment_ids)
     except Exception as e:
         print('Trying again: get submission')
-    	print(e)
+        print(e)
         continue
     not_finished=False
 
@@ -33,7 +33,7 @@ while not_finished:
         )
     except Exception as e:
         print('Trying again: search comments')
-    	print(e)
+        print(e)
         continue
     not_finished=False
 
